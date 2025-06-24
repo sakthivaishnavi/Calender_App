@@ -1,0 +1,65 @@
+[
+  {
+    "title": "Team Meeting",
+    "date": "2025-06-15",
+    "startTime": "09:00",
+    "endTime": "10:30",
+    "duration": 90
+  },
+  {
+    "title": "Project Review",
+    "date": "2025-06-15",
+    "startTime": "14:00",
+    "endTime": "15:30",
+    "duration": 90
+  },
+  {
+    "title": "Doctor Appointment",
+    "date": "2025-06-18",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "duration": 60
+  },
+  {
+    "title": "Painting Class",
+    "date": "2025-06-22",
+    "startTime": "15:00",
+    "endTime": "16:00",
+    "duration": 60
+  },
+  {
+    "title": "Gym",
+    "date": "2025-06-25",
+    "startTime": "07:00",
+    "endTime": "08:30",
+    "duration": 90
+  },
+  {
+    "title": "Coffee shop",
+    "date": "2025-06-28",
+    "startTime": "19:00",
+    "endTime": "21:00",
+    "duration": 120
+  },
+  {
+    "title": "Shopping",
+    "date": "2025-07-05",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "duration": 60
+  },
+  {
+    "title": "Client Presentation",
+    "date": "2025-07-12",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "duration": 120
+  },
+  {
+    "title": "Birthday Party",
+    "date": "2025-05-15",
+    "startTime": "18:00",
+    "endTime": "22:00",
+    "duration": 240
+  }
+]
