@@ -5,7 +5,6 @@ import DaysHeader from './ui/DaysHeader';
 import CalendarDay from './ui/CalendarDay';
 import EventSidebar from './ui/EventSidebar';
 
-// Main calendar component: handles state, navigation, and layout
 function Calendar() {
   const {
     currentDate,
@@ -25,7 +24,7 @@ function Calendar() {
   const [sidebarLoading, setSidebarLoading] = useState(false);
   const [sidebarEvents, setSidebarEvents] = useState([]);
 
-  // Handle clicking a date cell
+
   const handleDateClick = (date) => {
     setLoadingDate(date);
     setSidebarLoading(true);
@@ -37,7 +36,7 @@ function Calendar() {
     }, 400);
   };
 
-  // Year navigation
+
   const handlePrevYear = () => {
     const prevYear = new Date(currentDate);
     prevYear.setFullYear(prevYear.getFullYear() - 1);
@@ -49,7 +48,6 @@ function Calendar() {
     setCurrentDate(nextYear);
   };
 
-  // Only show sidebar events if a date is selected
   const selectedDateEvents = selectedDate ? sidebarEvents : [];
 
   return (

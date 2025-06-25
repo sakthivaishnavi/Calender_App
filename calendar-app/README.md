@@ -1,12 +1,49 @@
-# React + Vite
+# React Calendar App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive calendar application built with React 19, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Fast and Responsive**: Loads instantly and works smoothly on all devices.
+- **Event Conflicts**: Displays conflict in events when scheduled on same day.
+- **Lazy Loading**: Loads current month events first for speed, then prefetches adjacent months for a seamless experience.
+- **Modern UI**: Clean, accessible, and mobile-friendly design.
+- **Colorful Event Tags**: Events are color-coded for easy identification.
+- **Sidebar**: See all events for the selected day in a dedicated sidebar.
+- **Navigation**: Quickly jump between months and years, or return to today with one click.
 
-## Expanding the ESLint configuration
+## Benefits
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Time Efficient**: Only loads what you need, so you never wait for unnecessary data.
+- **Easy to Use**: Simple, intuitive interface anyone can use.
+
+## Getting Started
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+3. **Open your browser:**
+   Visit [http://localhost:1504](http://localhost:1504) to see the app.
+
+## Tech Stack
+- React 19
+- Vite
+- Tailwind CSS
+- date-fns
+
+## How It Works
+- The app loads events for the current month first, so you see your schedule instantly.
+- It prefetches events for the previous and next months in the background for smooth navigation.
+- The sidebar shows all events for the selected day, with color tags for clarity.
+
+## Customization
+- You can easily add new features or change the look by editing the components in the `src/components/Calendar` folder.
+- Events are stored in `public/events.json` for easy editing.
+
+## License
+This project is open source and free to use.
