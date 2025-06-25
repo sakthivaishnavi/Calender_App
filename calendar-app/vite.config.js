@@ -10,19 +10,20 @@ export default defineConfig({
 
     base: './', 
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: false,
-    minify: 'terser',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          utils: ['date-fns']
-        }
+  outDir: 'dist',
+  assetsDir: 'assets',
+  sourcemap: false,
+  // minify: 'esbuild', // default
+  rollupOptions: {
+    output: {
+      manualChunks: {
+        vendor: ['react', 'react-dom'],
+        utils: ['date-fns']
       }
     }
-  },
+  }
+}
+,
   server: {
     port: 1504,
     open: true
