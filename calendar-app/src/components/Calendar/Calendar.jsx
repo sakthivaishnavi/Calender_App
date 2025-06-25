@@ -52,7 +52,7 @@ function Calendar() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 font-sans">
-      <div className="max-w-7xl mx-auto px-1 sm:px-8 py-4 w-full min-w-[380px] md:min-w-[600px]">
+      <div className="max-w-7xl mx-auto px-3 mt-2 sm:px-8 sm:mt-0 py-4 w-full min-w-[380px] md:min-w-[600px]">
         <CalendarHeader
           currentDate={currentDate}
           onPrevMonth={navigateToPrevMonth}

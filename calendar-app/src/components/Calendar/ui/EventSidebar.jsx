@@ -11,33 +11,29 @@ function EventSidebar({ selectedDate, events, isLoading }) {
   }
   if (!selectedDate) {
     return (
-      <div className="w-full sm:w-80 bg-gradient-to-b from-white via-blue-50 to-purple-50 border-t sm:border-t-0 sm:border-l border-blue-200 p-6">
-        <div className="text-center text-blue-400">
-          <span className="w-12 h-12 mx-auto mb-4 block text-5xl">📅</span>
-          <p className="font-semibold text-lg">Select a date to view events</p>
-        </div>
+      <div className="w-full sm:w-80 bg-gradient-to-b from-white via-blue-50 to-purple-50 border-t sm:border-t-0 sm:border-l border-blue-200 p-6 flex flex-col items-center justify-center min-h-[180px]">
+        <p className="font-semibold text-lg text-blue-400 text-center">Select a date to view events</p>
       </div>
     );
   }
   if (events.length === 0) {
     return (
       <div className="w-full sm:w-80 bg-gradient-to-b from-white via-blue-50 to-purple-50 border-t sm:border-t-0 sm:border-l border-blue-200 p-6 flex flex-col items-center justify-center min-h-[180px]">
-        <span className="w-12 h-12 mb-4 block text-blue-200 text-5xl">📅</span>
-        <p className="text-lg font-semibold text-blue-700">No events for this date</p>
+        <p className="text-lg font-semibold text-blue-700 text-center">No events for this date</p>
       </div>
     );
   }
   const eventColors = getEventColorsForDay(events);
   return (
-    <div className="w-80 bg-gradient-to-b from-white via-blue-50 to-purple-50 border-l border-blue-200 p-6">
-      <h3 className="text-xl font-extrabold text-blue-900 mb-4 tracking-tight font-mono">
+    <div className="w-full sm:w-80 bg-gradient-to-b from-white via-blue-50 to-purple-50 border-t sm:border-t-0 sm:border-l border-blue-200 p-6 flex flex-col items-center justify-center min-h-[180px]">
+      <h3 className="text-xl font-extrabold text-blue-900 mb-4 tracking-tight font-mono text-center">
         {format(selectedDate, 'EEEE, MMMM d, yyyy')}
       </h3>
-      <div className="space-y-4">
+      <div className="space-y-4 w-full flex flex-col items-center justify-center">
         {events.map((event, idx) => (
           <div
             key={event.title + event.startTime}
-            className={`p-4 rounded-xl border-l-8 ${eventColors[idx]} shadow-lg flex items-center bg-white/90 hover:bg-blue-50 transition-all duration-200`}
+            className={`p-4 rounded-xl border-l-8 ${eventColors[idx]} shadow-lg flex items-center bg-white/90 hover:bg-blue-50 transition-all duration-200 w-full`}
           >
             <span className={`w-4 h-4 rounded-full border-2 border-blue-200 flex-shrink-0 mr-3 ${eventColors[idx].replace('bg-white/80','')}`}></span>
             <div className="flex flex-col">
@@ -50,7 +46,7 @@ function EventSidebar({ selectedDate, events, isLoading }) {
         ))}
       </div>
       {events.length > 1 && (
-        <div className="mt-6 p-3 bg-gradient-to-r from-yellow-100 via-amber-50 to-yellow-50 border border-amber-200 rounded-lg shadow flex items-center gap-2">
+        <div className="mt-6 p-3 bg-gradient-to-r from-yellow-100 via-amber-50 to-yellow-50 border border-amber-200 rounded-lg shadow flex items-center gap-2 justify-center">
           <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
           <span className="text-base font-semibold text-amber-800">
             Multiple events scheduled
