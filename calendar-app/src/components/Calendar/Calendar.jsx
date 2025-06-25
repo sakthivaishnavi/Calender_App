@@ -5,13 +5,14 @@ import DaysHeader from './ui/DaysHeader';
 import CalendarDay from './ui/CalendarDay';
 import EventSidebar from './ui/EventSidebar';
 
+// Main calendar component: handles state, navigation, and layout
 function Calendar() {
   const {
     currentDate,
     selectedDate,
     calendarDays,
     isPending,
-    setCurrentDate, 
+    setCurrentDate,
     navigateToNextMonth,
     navigateToPrevMonth,
     navigateToToday,
@@ -19,11 +20,13 @@ function Calendar() {
     getEventsForDate,
     getDayInfo
   } = useCalendar();
+
   const [loadingDate, setLoadingDate] = useState(null);
   const [sidebarLoading, setSidebarLoading] = useState(false);
   const [sidebarEvents, setSidebarEvents] = useState([]);
 
-  const handleDateClick = async (date) => {
+  // Handle clicking a date cell
+  const handleDateClick = (date) => {
     setLoadingDate(date);
     setSidebarLoading(true);
     setTimeout(() => {
@@ -34,24 +37,25 @@ function Calendar() {
     }, 400);
   };
 
+  // Year navigation
   const handlePrevYear = () => {
     const prevYear = new Date(currentDate);
     prevYear.setFullYear(prevYear.getFullYear() - 1);
     setCurrentDate(prevYear);
   };
-
   const handleNextYear = () => {
     const nextYear = new Date(currentDate);
     nextYear.setFullYear(nextYear.getFullYear() + 1);
     setCurrentDate(nextYear);
   };
 
+  // Only show sidebar events if a date is selected
   const selectedDateEvents = selectedDate ? sidebarEvents : [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 font-sans">
-      <div className="max-w-7xl mx-auto px-2 sm:px-8 py-4">
-        <CalendarHeader 
+      <div className="max-w-7xl mx-auto px-1 sm:px-8 py-4 w-full min-w-[380px] md:min-w-[600px]">
+        <CalendarHeader
           currentDate={currentDate}
           onPrevMonth={navigateToPrevMonth}
           onNextMonth={navigateToNextMonth}
@@ -69,7 +73,7 @@ function Calendar() {
             )}
             <div className="grid grid-cols-7 gap-0.5 sm:gap-1">
               {calendarDays.map(day => (
-                <CalendarDay 
+                <CalendarDay
                   key={day.toString()}
                   dayInfo={getDayInfo(day)}
                   onDateSelect={handleDateClick}
@@ -78,7 +82,7 @@ function Calendar() {
               ))}
             </div>
           </div>
-          <EventSidebar 
+          <EventSidebar
             selectedDate={selectedDate}
             events={selectedDateEvents}
             isLoading={sidebarLoading}

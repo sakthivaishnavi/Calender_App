@@ -35,11 +35,16 @@ function EventSidebar({ selectedDate, events, isLoading }) {
       </h3>
       <div className="space-y-4">
         {events.map((event, idx) => (
-          <div key={event.title + event.startTime} className={`p-4 rounded-xl border-l-8 ${eventColors[idx]} shadow-lg flex items-center bg-white/90 hover:bg-blue-50 transition-all duration-200`}>
+          <div
+            key={event.title + event.startTime}
+            className={`p-4 rounded-xl border-l-8 ${eventColors[idx]} shadow-lg flex items-center bg-white/90 hover:bg-blue-50 transition-all duration-200`}
+          >
             <span className={`w-4 h-4 rounded-full border-2 border-blue-200 flex-shrink-0 mr-3 ${eventColors[idx].replace('bg-white/80','')}`}></span>
             <div className="flex flex-col">
               <span className="font-bold text-blue-900 text-base leading-tight" style={{fontFamily: 'Arial, Helvetica, sans-serif'}}>{event.title}</span>
-              <span className="text-xs text-blue-700 mt-1 font-semibold" style={{fontFamily: 'Arial, Helvetica, sans-serif'}}>{event.startTime} - {event.endTime} <span className="bg-blue-100 px-2 py-1 rounded text-xs ml-2 text-blue-800 font-bold">{event.duration}min</span></span>
+              <span className="text-xs text-blue-700 mt-1 font-semibold" style={{fontFamily: 'Arial, Helvetica, sans-serif'}}>
+                {event.startTime} - {event.endTime} <span className="bg-blue-100 px-2 py-1 rounded text-xs ml-2 text-blue-800 font-bold">{event.duration}min</span>
+              </span>
             </div>
           </div>
         ))}

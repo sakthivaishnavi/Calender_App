@@ -14,34 +14,39 @@ function CalendarDay({ dayInfo, onDateSelect, isLoading }) {
     events
   } = dayInfo;
 
+
   const eventColors = getEventColorsForDay(events);
 
-  let dayNumberClasses =
-    'flex items-center justify-center w-8 h-8 mx-auto text-base sm:text-lg font-bold transition-all duration-200';
-  if (isToday) {
-    dayNumberClasses += ' bg-blue-600 text-white rounded-full shadow';
-  } else {
-    dayNumberClasses += ' text-gray-900';
-  }
 
+  let dayNumberClasses = [
+    'flex items-center justify-center w-8 h-8 mx-auto text-base sm:text-lg font-bold transition-all duration-200',
+    isToday ? 'bg-blue-600 text-white rounded-full shadow' : '',
+    !isCurrentMonth && !isSelected ? 'text-gray-300' : '', // Out-of-month dates are lighter unless selected
+    isCurrentMonth || isSelected ? 'text-gray-900' : '',
+    "font-['Times New Roman',Times,serif]"
+  ].join(' ');
 
-  dayNumberClasses += ' font-[\'Times New Roman\',Times,serif]';
+  let cellClasses = [
+    'min-h-[72px] sm:min-h-[110px] p-1 sm:p-2 cursor-pointer transition-all duration-200 hover:bg-blue-50',
+    'flex flex-col items-center justify-start select-none relative overflow-hidden border border-gray-200',
+    isSelected ? 'ring-2 ring-black rounded-2xl z-10' : ''
+  ].join(' ');
 
-  let cellClasses =
-    'min-h-[48px] sm:min-h-[70px] p-0.5 sm:p-1 cursor-pointer transition-all duration-200 hover:bg-blue-50 flex flex-col items-center justify-start select-none relative overflow-hidden';
-  if (isSelected) {
-    cellClasses += ' ring-2 ring-black rounded-2xl z-10';
-  }
+ 
+  const handleClick = () => {
+    if (!isLoading) onDateSelect(date);
+  };
 
   return (
     <div
       className={cellClasses}
-      onClick={() => !isLoading && onDateSelect(date)}
+      onClick={handleClick}
       tabIndex={0}
       aria-label={`Day ${dayNumber}`}
     >
+ 
       <div className="flex flex-col items-center justify-center mb-1 sm:mb-2 w-full relative min-h-[2.5rem]">
-        <div className="flex flex-row-reverse items-start w-full relative" style={{minHeight: '2.5rem', paddingTop: '0.5rem'}}>
+        <div className="flex flex-row-reverse items-start w-full relative" style={{ minHeight: '2.5rem', paddingTop: '0.5rem' }}>
           {hasConflicts && (
             <div
               className="absolute top-1 right-1 sm:top-0 sm:right-0 bg-red-100 text-red-600 text-xs px-2 rounded shadow z-20"
@@ -51,24 +56,24 @@ function CalendarDay({ dayInfo, onDateSelect, isLoading }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transform: 'translateY(-40%) translateX(40%)', // More offset
+                transform: 'translateY(-40%) translateX(40%)',
               }}
             >
               {eventsCount}
             </div>
           )}
-          <span className={dayNumberClasses} style={{zIndex: 10}}>{dayNumber}</span>
+          <span className={dayNumberClasses} style={{ zIndex: 10 }}>{dayNumber}</span>
         </div>
       </div>
-      <div className="space-y-0.5 w-full flex flex-col items-center justify-center max-h-[32px] sm:max-h-[44px] overflow-hidden">
+      <div className="space-y-1 w-full flex flex-col items-center justify-center max-h-[80px] sm:max-h-[120px] overflow-visible">
         {isLoading ? (
           <div className="flex items-center justify-center w-full h-6 animate-pulse">
             <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
           events.slice(0, 2).map((event, idx) => (
-            <div className="w-full flex justify-center">
-              <EventItem key={event.title + event.startTime} event={event} colorClass={eventColors[idx]} />
+            <div className="w-full flex justify-center" key={event.title + event.startTime}>
+              <EventItem event={event} colorClass={eventColors[idx]} />
             </div>
           ))
         )}

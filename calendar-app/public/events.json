@@ -1,5 +1,12 @@
 [
   {
+    "title": "Exercise",
+    "date": "2025-06-15",
+    "startTime": "07:00",
+    "endTime": "09:30",
+    "duration": 90
+  },
+  {
     "title": "Team Meeting",
     "date": "2025-06-15",
     "startTime": "09:00",
